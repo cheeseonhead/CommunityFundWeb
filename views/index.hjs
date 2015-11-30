@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Community Fund</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="index_assets/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Community Fund</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -64,6 +64,11 @@
                     <li>
                         <a class="page-scroll" href="#team">Team</a>
                     </li>
+                    {{#login}}
+                    <li>
+                        <a id="login-button" class="" href="#">Sign In</a>
+                    </li>
+                    {{/login}}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -75,8 +80,8 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
+                <div class="intro-lead-in">Welcome To Community Fund!</div>
+                <div class="intro-heading">Share Your Ideas now</div>
                 <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
             </div>
         </div>
@@ -88,7 +93,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">All you need to know</h2>
-                    <h3 class="section-subheading text-muted">What does CommunityFund provide you?</h3>
+                    <h3 class="section-subheading text-muted">What does Community Fund provide you?</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -126,7 +131,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">What is CommunityFund?</h3>
+                    <h3 class="section-subheading text-muted">What is Community Fund?</h3>
                 </div>
             </div>
             <div class="row">
@@ -142,7 +147,7 @@
                                     <h4 class="subheading">Start of Something New</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted"><b>CommunityFund</b> is created to provide initiators with a chance of getting funded by people of a similar mind. This website is created with the intention of giving everyone the best experience.</p>
+                                    <p class="text-muted"><b>Community Fund</b> is created to provide initiators with a chance of getting funded by people of a similar mind. This website is created with the intention of giving everyone the best experience.</p>
                                 </div>
                             </div>
                         </li>
