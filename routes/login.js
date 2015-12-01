@@ -3,7 +3,6 @@ var router = express.Router();
 var util = require('util');
 var sess;
 
-
 router.get('/', function(req, res, next) {
 	sess = req.session;
 

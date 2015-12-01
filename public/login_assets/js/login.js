@@ -15,19 +15,25 @@
     // Validation
     $("#login-form").validate({
         rules: {
-            lg_username: "required",
-            lg_password: "required"
+            username: "required",
+            password: "required"
         },
         errorClass: "form-invalid"
     });
 
     // Form Submission
     $("#login-form").submit(function(event) {
+        event.preventDefault();
         var thisForm = $(this);
         remove_loading(thisForm);
+
+        var isValid = thisForm.valid();
+        if (!isValid) {
+            return false;
+        }
+
         form_loading(thisForm);
 
-        event.preventDefault();
 
         if (options['useAJAX'] == true) {
 
@@ -49,7 +55,7 @@
                             // eventRegistry.doEvent(eventRegistry.EventAjaxResponse, respObj);
                             location.reload();
                         } else {
-                            form_failed(thisForm, respObj.error_message);
+                            form_failed(thisForm, respObj.err_msg);
                         }
                     } catch (e) {
                         form_failed(thisForm);

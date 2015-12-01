@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 		res.redirect('/');
 	}
 
-	// Show log in page
+	// Show register in page
 	res.render('register');
 });
 
