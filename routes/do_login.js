@@ -14,7 +14,7 @@ var TasksClass = function() {
 		if (typeof(tasks[0]) == "function") {
 			tasks[0]();
 		}
-		tasks.pop();
+		tasks.shift();
 	}
 
 	self.addTask = function(task) {

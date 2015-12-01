@@ -14,7 +14,7 @@ var TasksClass = function() {
 		if (typeof(tasks[0]) == "function") {
 			tasks[0]();
 		}
-		tasks.pop();
+		tasks.shift();
 	}
 
 	self.addTask = function(task) {
@@ -77,7 +77,9 @@ router.post('/', function(req, res, next) {
 			username: username,
 			pwd: pwd,
 			firstname: firstname,
-			surname: surname
+			surname: surname,
+			country: "",
+			reputation: 0
 		}, function(err, qRes) {
 			if (err) {
 				result['success'] = 0;
