@@ -19,7 +19,7 @@ $(function() {
 	});
 
 	$('#logout-button').click(function(event){
-		location.href = "logout";
+		location.href = "do_logout";
 	});
 });
 
