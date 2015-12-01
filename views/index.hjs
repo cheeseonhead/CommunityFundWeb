@@ -69,6 +69,14 @@
                         <a id="login-button" class="" href="#">Sign In</a>
                     </li>
                     {{/login}}
+                    {{^login}}
+                    <li>
+                        <a>Hi! {{firstname}}!</a>
+                    </li>
+                    <li>
+                        <a id="logout-button" class="" href="#">Sign Out</a>
+                    </li>
+                    {{/login}}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
