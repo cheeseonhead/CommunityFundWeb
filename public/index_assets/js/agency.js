@@ -17,6 +17,10 @@ $(function() {
 	$('#login-button').click(function(event) {
 		location.href = "login";
 	});
+
+	$('#logout-button').click(function(event){
+		location.href = "logout";
+	});
 });
 
 // Highlight the top nav as scrolling occurs
