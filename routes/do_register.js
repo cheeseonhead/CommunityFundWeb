@@ -79,7 +79,8 @@ router.post('/', function(req, res, next) {
 			firstname: firstname,
 			surname: surname,
 			country: "",
-			reputation: 0
+			reputation: 0,
+			interests: []
 		}, function(err, qRes) {
 			if (err) {
 				result['success'] = 0;
