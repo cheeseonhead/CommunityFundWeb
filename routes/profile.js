@@ -49,6 +49,15 @@ router.get('/', function(req, res, next) {
 		res.redirect('/');
 	}
 
+	Tasks.addTask(function() {
+		usersColl.find({
+			username: sess['logged_in_as']
+		}, {}, function(err, users) {
+			data['firstname'] = users[0].firstname;
+			Tasks.runNext();
+		});
+	})
+
 	// Check if targetUser exists
 	Tasks.addTask(function() {
 		usersColl.find({
