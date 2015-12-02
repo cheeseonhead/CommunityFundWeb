@@ -35,18 +35,23 @@ router.get('/', function(req, res, next) {
 	var Tasks = new TasksClass();
 	var usersColl = req.db.get('users');
 	var projectsColl = req.db.get('projects');
+	var interestsColl = req.db.get('interests');
 
 	// Check if which username is specified
-	if (req.body.username) {
+	if (req.query.username) {
 		// Specified! Store it
-		targetUser = req.body.username;
+		console.log("Hello1");
+		targetUser = req.query.username;
 	} else if (sess['logged_in_as']) {
-		// Not specified show logged in user
+		// Show logged in user
+		console.log("Hello2");
 		targetUser = sess['logged_in_as'];
 		showSelf = true;
 	} else {
 		// Can't show anything go back to main page
+		console.log("Hello3");
 		res.redirect('/');
+		return;
 	}
 
 	Tasks.addTask(function() {
@@ -78,6 +83,32 @@ router.get('/', function(req, res, next) {
 				data['tg_firstname'] = users[0].firstname;
 				data['tg_surname'] = users[0].surname;
 				data['tg_reputation'] = users[0].reputation;
+				data['tg_country'] = users[0].country;
+				targetUserObj = users[0];
+				Tasks.runNext();
+			}
+		});
+	});
+
+	// Find all interests of this user
+	Tasks.addTask(function() {
+		interestsColl.find({
+			int_id: {
+				$in: targetUserObj.interests
+			}
+		}, "int_name", function(err, interests) {
+			if (err) {
+				result['success'] = 0;
+				result['err_type'] = 'mongodb_error';
+				result['err_msg'] = "Unknown Error Occured.";
+				res.render('profile', result);
+			} else if (interests.length <= 0) {
+				result['success'] = 0;
+				result['err_type'] = 'no_matched_interests';
+				res.render('profile', result);
+			} else {
+				data['tg_interest'] = interests;
+				console.log(data['tg_interest']);
 				Tasks.runNext();
 			}
 		});
@@ -88,7 +119,7 @@ router.get('/', function(req, res, next) {
 		projectsColl.find({
 			owner_username: targetUser
 		}, {}, function(err, projects) {
-			console.log(projects);
+			// console.log(projects);
 			data['project'] = projects;
 			// data['project'] = ["Hello", "GOODBYE"];
 			Tasks.runNext();
