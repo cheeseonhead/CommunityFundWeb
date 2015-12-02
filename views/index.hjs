@@ -74,6 +74,9 @@
                         <a>Hi! {{firstname}}!</a>
                     </li>
                     <li>
+                        <a href="profile">Profile</a>
+                    </li>
+                    <li>
                         <a id="logout-button" class="" href="#">Sign Out</a>
                     </li>
                     {{/login}}
