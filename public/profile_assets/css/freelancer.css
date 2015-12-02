@@ -190,7 +190,7 @@ section.success a:focus,
 section.success a:active,
 section.success a.active {
     outline: 0;
-    color: #2c3e50;
+    color: #fff;
 }
 
 @media(max-width:767px) {
@@ -460,4 +460,22 @@ footer .footer-below {
 
 #about .container {
     font-size: 22px;
+}
+
+.success .btn-default, .open>.dropdown-toggle.btn-default:hover{
+    background-color: #32CC99;
+    border-color:#32CC99;
+}
+
+.success .btn-default:hover,.open>.dropdown-toggle.btn-default {
+    background-color: #458B74;
+    border-color:#458B74;
+}
+
+.success .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+    background-color: #4CB7A5;
+}
+
+.success .dropdown-menu {
+    background-color: #527F76;
 }

@@ -46,12 +46,16 @@ router.get('/', function(req, res, next) {
 		// Show logged in user
 		console.log("Hello2");
 		targetUser = sess['logged_in_as'];
-		showSelf = true;
 	} else {
 		// Can't show anything go back to main page
-		console.log("Hello3");
 		res.redirect('/');
 		return;
+	}
+
+	if (targetUser == sess['logged_in_as']) {
+		data['show_self'] = true;
+	} else {
+		data['show_self'] = false;
 	}
 
 	Tasks.addTask(function() {

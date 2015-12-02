@@ -10,6 +10,7 @@
         <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
         <link href="profile_assets/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
+        <link rel="stylesheet" href="profile_assets/css/bootstrap-select.css">
         <link href="profile_assets/css/freelancer.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="profile_assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -116,13 +117,13 @@
                 </div>
             </div>
         </section>
-
         <!-- About Section -->
         <section class="success" id="about">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2>About</h2>
+                        <a href="#"><i class="fa fa-pencil"></i>Edit</a>
                         <hr class="star-light">
                     </div>
                 </div>
@@ -132,6 +133,15 @@
                         <ul>
                             <li>Name: {{tg_firstname}} {{tg_surname}}</li>
                             <li>Country: {{#tg_country}}{{tg_country}}{{/tg_country}}{{^tg_country}}Not Specified{{/tg_country}}</li>
+                            {{#show_self}}
+                            <li style="">Name: <input type='text' placeholder="Test"></input></li>
+                            <li style="">Country:
+                                <select class="selectpicker">
+                                    <option>USA</option>
+                                    <option>Canada</option>
+                                </select>
+                            </li>
+                            {{/show_self}}
                         </ul>
                     </div>
                     <div class="col-lg-4">
@@ -146,9 +156,9 @@
                         </ul>
                     </div>
                 </div>
+                <div class="text-center"><a href="#">Save</a></div>
             </div>
         </section>
-
         <!-- Footer -->
         <footer class="text-center">
             <div class="footer-above">
@@ -246,5 +256,9 @@
         <script src="profile_assets/js/contact_me.js"></script>
         <!-- Custom Theme JavaScript -->
         <script src="profile_assets/js/freelancer.js"></script>
+        <script src="profile_assets/js/bootstrap-select.js"></script>
+        <script>
+        $('.selectpicker').selectpicker();
+        </script>
     </body>
 </html>
