@@ -165,7 +165,7 @@
                     </div>
                     <div class="col-lg-4">
                         Interests:
-                        <ul>
+                        <ul class="infoDisplay">
                             {{#tg_interest}}
                             <li>{{int_name}}</li>
                             {{/tg_interest}}
@@ -173,6 +173,25 @@
                             <li>Not Specified</li>
                             {{/tg_interest}}
                         </ul>
+                        {{#show_self}}
+                        <div class="login-form-1 infoEditForm" style='display:none;'>
+                            <form id="interest-form" class="text-left">
+                                <div class="login-form-main-message"></div>
+                                <div class="main-login-form">
+                                    <div class="login-group">
+                                        <div class="checkbox">
+                                            {{#interest}}
+                                            <div class="form-group">
+                                                <label><input type="checkbox" {{checked}}>{{name}}</label>
+                                            </div>
+                                            {{/interest}}
+                                        </div>
+                                    </div>
+                                    <button id="saveButton" type="submit" class="btn btn_warning login-button">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        {{/show_self}}
                     </div>
                 </div>
             </div>

@@ -114,7 +114,6 @@ router.get('/', function(req, res, next) {
 				res.render('profile', result);
 			} else {
 				data['tg_interest'] = interests;
-				console.log(data['tg_interest']);
 				self.runNext();
 			}
 		});
@@ -150,6 +149,37 @@ router.get('/', function(req, res, next) {
 			Tasks.runNext();
 		});
 	});
+
+	// All the interests
+	Tasks.addTask(function(self) {
+		if (!data['show_self']) {
+			self.runNext();
+			return;
+		}
+
+		var tg_interests = [];
+		for (var i = 0; i < data['tg_interest'].length; i++) {
+			tg_interests.push(data['tg_interest'][i].int_name);
+		}
+
+		console.log(tg_interests);
+
+		data['interest'] = [];
+		interestsColl.find({}, {}, function(err, interests) {
+			for (var i = 0; i < interests.length; i++) {
+				var checked = "";
+				if (tg_interests.indexOf(interests[i].int_name) != -1) {
+					checked = "checked";
+				}
+				data['interest'].push({
+					name: interests[i].int_name,
+					checked: checked
+				});
+			}
+			// console.log(data['country']);
+			Tasks.runNext();
+		});
+	})
 
 	// Render
 	Tasks.addTask(function(self) {
