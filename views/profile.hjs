@@ -123,26 +123,42 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2>About</h2>
-                        <a href="#"><i class="fa fa-pencil"></i>Edit</a>
+                        {{#show_self}}
+                        <a id='editButton' href="#" class="editable"><i class="fa fa-pencil"></i>Edit</a>
+                        {{/show_self}}
                         <hr class="star-light">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-2">
                         Basic Info:
-                        <ul>
+                        <ul class="infoDisplay">
                             <li>Name: {{tg_firstname}} {{tg_surname}}</li>
                             <li>Country: {{#tg_country}}{{tg_country}}{{/tg_country}}{{^tg_country}}Not Specified{{/tg_country}}</li>
-                            {{#show_self}}
-                            <li style="">Name: <input type='text' placeholder="Test"></input></li>
-                            <li style="">Country:
-                                <select class="selectpicker">
-                                    <option>USA</option>
-                                    <option>Canada</option>
-                                </select>
-                            </li>
-                            {{/show_self}}
                         </ul>
+                        {{#show_self}}
+                        <div class="login-form-1 infoEditForm" style='display:none;'>
+                            <form id="register-form" class="text-left">
+                                <div class="login-form-main-message"></div>
+                                <div class="main-login-form">
+                                    <div class="login-group">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="new_firstname" name="new_firstname" placeholder="firstname" value="{{tg_firstname}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="new_surname" name="new_surname" placeholder="last name" value="{{tg_surname}}">
+                                        </div>
+                                        <div class="form-group">
+                                            Country: <select class="selectpicker">
+                                                <option>{{tg_country}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn_warning login-button">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        {{/show_self}}
                     </div>
                     <div class="col-lg-4">
                         Interests:
@@ -156,7 +172,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="text-center"><a href="#">Save</a></div>
             </div>
         </section>
         <!-- Footer -->
