@@ -151,6 +151,9 @@
                                         <div class="form-group">
                                             Country: <select class="selectpicker">
                                                 <option>{{tg_country}}</option>
+                                                {{#country}}
+                                                <option>{{name}}</option>
+                                                {{/country}}
                                             </select>
                                         </div>
                                     </div>

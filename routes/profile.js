@@ -11,10 +11,11 @@ var TasksClass = function() {
 
 	self.runNext = function() {
 		if (tasks.length <= 0) return;
-		if (typeof(tasks[0]) == "function") {
-			tasks[0]();
-		}
+		var nextFunction = tasks[0];
 		tasks.shift();
+		if (typeof(nextFunction) == "function") {
+			nextFunction(self);
+		}
 	}
 
 	self.addTask = function(task) {
@@ -36,6 +37,7 @@ router.get('/', function(req, res, next) {
 	var usersColl = req.db.get('users');
 	var projectsColl = req.db.get('projects');
 	var interestsColl = req.db.get('interests');
+	var countriesColl = req.db.get('countries');
 
 	// Check if which username is specified
 	if (req.query.username) {
@@ -68,7 +70,7 @@ router.get('/', function(req, res, next) {
 	})
 
 	// Check if targetUser exists
-	Tasks.addTask(function() {
+	Tasks.addTask(function(self) {
 		usersColl.find({
 			username: targetUser
 		}, {}, function(err, users) {
@@ -89,13 +91,13 @@ router.get('/', function(req, res, next) {
 				data['tg_reputation'] = users[0].reputation;
 				data['tg_country'] = users[0].country;
 				targetUserObj = users[0];
-				Tasks.runNext();
+				self.runNext();
 			}
 		});
 	});
 
 	// Find all interests of this user
-	Tasks.addTask(function() {
+	Tasks.addTask(function(self) {
 		interestsColl.find({
 			int_id: {
 				$in: targetUserObj.interests
@@ -113,25 +115,44 @@ router.get('/', function(req, res, next) {
 			} else {
 				data['tg_interest'] = interests;
 				console.log(data['tg_interest']);
-				Tasks.runNext();
+				self.runNext();
 			}
 		});
 	});
 
 	// Find all projects by this user
-	Tasks.addTask(function() {
+	Tasks.addTask(function(self) {
 		projectsColl.find({
 			owner_username: targetUser
 		}, {}, function(err, projects) {
 			// console.log(projects);
 			data['project'] = projects;
 			// data['project'] = ["Hello", "GOODBYE"];
+			self.runNext();
+		});
+	});
+
+	// All the countries
+	Tasks.addTask(function(self) {
+		if (!data['show_self']) {
+			self.runNext();
+			return;
+		}
+
+		data['country'] = [];
+		countriesColl.find({}, {}, function(err, countries) {
+			for (var i = 0; i < countries.length; i++) {
+				data['country'].push({
+					name: countries[i].name
+				});
+			}
+			// console.log(data['country']);
 			Tasks.runNext();
 		});
 	});
 
 	// Render
-	Tasks.addTask(function() {
+	Tasks.addTask(function(self) {
 		res.render('profile', data);
 	});
 
