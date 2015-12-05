@@ -172,6 +172,7 @@ router.get('/', function(req, res, next) {
 					checked = "checked";
 				}
 				data['interest'].push({
+					id: interests[i].int_id,
 					name: interests[i].int_name,
 					checked: checked
 				});

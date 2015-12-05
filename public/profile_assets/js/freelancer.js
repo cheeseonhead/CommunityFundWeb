@@ -73,7 +73,7 @@ $("#edit-form").validate({
     }
 });
 
-// Save Button
+// Edit form submition
 $('#edit-form').submit(function(event) {
     event.preventDefault();
 
@@ -94,6 +94,52 @@ $('#edit-form').submit(function(event) {
     $.ajax({
         type: "POST",
         url: "do_edit",
+        data: data,
+        success: function(resp) {
+            try {
+                console.log(resp);
+                if (resp.success) {
+                    form_success(thisForm);
+                    console.log("Success!");
+                    location.reload();
+                } else {
+                    // console.log("THIS:", $(this)); // temp
+                    form_failed(thisForm, resp.err_msg);
+                    // console.log(respObj.error_message); // temp
+                }
+            } catch (e) {
+                form_failed(thisForm);
+                console.log("error:", e);
+                console.log(resp);
+            }
+        },
+        error: function(name, err, desc) {
+            alert(desc);
+        }
+    });
+});
+
+// Interest form submission
+$('#interest-form').submit(function(event) {
+    event.preventDefault();
+
+    var thisForm = $(this);
+
+    var isValid = thisForm.valid();
+    if (!isValid) {
+        return false;
+    }
+
+    var dataArray = thisForm.serializeArray();
+    var data = {};
+    for (var i = 0; i < dataArray.length; i++) {
+        data[dataArray[i]['name']] = dataArray[i]['value'];
+    }
+    console.log(data);
+
+    $.ajax({
+        type: "POST",
+        url: "do_edit_interest",
         data: data,
         success: function(resp) {
             try {

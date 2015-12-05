@@ -182,7 +182,7 @@
                                         <div class="checkbox">
                                             {{#interest}}
                                             <div class="form-group">
-                                                <label><input type="checkbox" {{checked}}>{{name}}</label>
+                                                <label><input type="checkbox" name="{{id}}" {{checked}}>{{name}}</label>
                                             </div>
                                             {{/interest}}
                                         </div>
