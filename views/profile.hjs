@@ -138,7 +138,7 @@
                         </ul>
                         {{#show_self}}
                         <div class="login-form-1 infoEditForm" style='display:none;'>
-                            <form id="register-form" class="text-left">
+                            <form id="edit-form" class="text-left">
                                 <div class="login-form-main-message"></div>
                                 <div class="main-login-form">
                                     <div class="login-group">
@@ -149,7 +149,7 @@
                                             <input type="text" class="form-control" id="new_surname" name="new_surname" placeholder="last name" value="{{tg_surname}}">
                                         </div>
                                         <div class="form-group">
-                                            Country: <select class="selectpicker">
+                                            Country: <select class="selectpicker" class="form-control" id="new_country" name="new_country">
                                                 <option>{{tg_country}}</option>
                                                 {{#country}}
                                                 <option>{{name}}</option>
@@ -157,7 +157,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn_warning login-button">Save</button>
+                                    <button id="saveButton" type="submit" class="btn btn_warning login-button">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -263,6 +263,9 @@
         {{/project}}
         <!-- jQuery -->
         <script src="profile_assets/js/jquery.js"></script>
+        <script src="profile_assets/js/bootstrap-select.js"></script>
+        <!-- Validator -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="profile_assets/js/bootstrap.min.js"></script>
         <!-- Plugin JavaScript -->
@@ -274,7 +277,6 @@
         <script src="profile_assets/js/contact_me.js"></script>
         <!-- Custom Theme JavaScript -->
         <script src="profile_assets/js/freelancer.js"></script>
-        <script src="profile_assets/js/bootstrap-select.js"></script>
         <script>
         $('.selectpicker').selectpicker();
         </script>

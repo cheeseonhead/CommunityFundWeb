@@ -45,6 +45,7 @@ app.use('/profile', require('./routes/profile'));
 app.use('/do_login', require('./routes/do_login'));
 app.use('/do_register', require('./routes/do_register'));
 app.use('/do_logout', require('./routes/do_logout'));
+app.use('/do_edit', require('./routes/do_edit'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
