@@ -479,3 +479,7 @@ footer .footer-below {
 .success .dropdown-menu {
     background-color: #527F76;
 }
+
+textarea {
+    resize: none;
+}

@@ -37,12 +37,17 @@ app.use(function(req, res, next) {
     req.db = db;
     next();
 });
+
+// Views
 app.use('/', routes);
 app.use('/users', users);
 app.use('/login', require('./routes/login'));
 app.use('/register', require('./routes/register'));
 app.use('/profile', require('./routes/profile'));
 app.use('/project', require('./routes/project'));
+app.use('/create_project', require('./routes/create_project'));
+
+// Backends
 app.use('/do_login', require('./routes/do_login'));
 app.use('/do_register', require('./routes/do_register'));
 app.use('/do_logout', require('./routes/do_logout'));
@@ -50,6 +55,7 @@ app.use('/do_edit', require('./routes/do_edit'));
 app.use('/do_p_edit', require('./routes/do_p_edit'));
 app.use('/do_edit_interest', require('./routes/do_edit_interest'));
 app.use('/do_p_edit_interest', require('./routes/do_p_edit_interest'));
+app.use('/do_create_project', require('./routes/do_create_project'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
