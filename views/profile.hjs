@@ -293,7 +293,7 @@
         <script src="profile_assets/js/jqBootstrapValidation.js"></script>
         <script src="profile_assets/js/contact_me.js"></script>
         <!-- Custom Theme JavaScript -->
-        <script src="profile_assets/js/freelancer.js"></script>
+        <script src="profile_assets/js/profile.js"></script>
         <script>
         $('.selectpicker').selectpicker();
         </script>
