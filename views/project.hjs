@@ -123,8 +123,6 @@
                             </form>
                         </div>
                         {{/show_owner}}
-                    </div>
-                    <div class="col-lg-4">
                         Categories:
                         <ul class="infoDisplay">
                             {{#p_interest}}
@@ -153,6 +151,14 @@
                             </form>
                         </div>
                         {{/show_owner}}
+                    </div>
+                    <div class="col-lg-4">
+                        {{#p_description}}
+                        {{p_description}}
+                        {{/p_description}}
+                        {{^p_description}}
+                        None :(
+                        {{/p_description}}
                     </div>
                 </div>
             </div>

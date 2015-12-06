@@ -82,6 +82,7 @@ router.get('/', function(req, res, next) {
 					data['p_goal'] = projects[0].funding_goal;
 					data['p_reputation'] = projects[0].reputation;
 					data['p_id'] = projects[0].id;
+					data['p_description'] = projects[0].description;
 					p_int_id = projects[0].categories;
 					ownerUsername = projects[0].owner_username;
 					tm.runNext();
