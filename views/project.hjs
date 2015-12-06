@@ -150,12 +150,31 @@
                         {{/show_owner}}
                     </div>
                     <div class="col-lg-4">
+                        Description:
+                        <div class="infoDisplay">
                         {{#p_description}}
                         {{p_description}}
                         {{/p_description}}
                         {{^p_description}}
                         None :(
                         {{/p_description}}
+                        </div>
+                        {{#show_owner}}
+                        <div class="login-form-1 infoEditForm" style='display:none;'>
+                            <form id="description-form" class="text-left">
+                                <div class="login-form-main-message"></div>
+                                <div class="main-login-form">
+                                    <div class="login-group">
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="new_description" name="new_description" placeholder="description" rows="30">{{p_description}}</textarea>
+                                        </div>
+                                    </div>
+                                    <button id="saveButton" type="submit" class="btn btn_warning login-button">Save</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        {{/show_owner}}
                     </div>
                 </div>
             </div>

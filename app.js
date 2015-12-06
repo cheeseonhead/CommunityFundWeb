@@ -56,6 +56,7 @@ app.use('/do_p_edit', require('./routes/do_p_edit'));
 app.use('/do_edit_interest', require('./routes/do_edit_interest'));
 app.use('/do_p_edit_interest', require('./routes/do_p_edit_interest'));
 app.use('/do_create_project', require('./routes/do_create_project'));
+app.use('/do_p_edit_description', require('./routes/do_p_edit_description'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
