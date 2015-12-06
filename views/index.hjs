@@ -77,6 +77,9 @@
                         <a href="profile">Profile</a>
                     </li>
                     <li>
+                        <a href="create_project">Create Project</a>
+                    </li>
+                    <li>
                         <a id="logout-button" class="" href="#">Sign Out</a>
                     </li>
                     {{/login}}

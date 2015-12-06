@@ -60,7 +60,11 @@ router.post('/', function(req, res, next) {
 			}
 		}, "id", function(err, item) {
 			// Find the next id
-			pid = item.id + 1;
+			if (!item)
+				pid = 1;
+			else {
+				pid = item.id + 1;
+			}
 
 			curProObj = {
 				id: pid,
