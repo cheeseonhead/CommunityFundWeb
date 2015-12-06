@@ -266,7 +266,7 @@
                                 <p>{{description}}</p>
                                 <ul class="list-inline item-details">
                                     <li>
-                                        <strong><a href="http://startbootstrap.com">Project Page</a>
+                                        <strong><a href="project?id={{id}}">Project Page</a>
                                         </strong>
                                     </li>
                                 </ul>
