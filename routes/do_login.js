@@ -31,6 +31,8 @@ router.post('/', function(req, res, next) {
 	var Tasks = new TasksClass();
 	var usersColl = req.db.get('users');
 
+	result['backUrl'] = sess['backUrl'];
+
 	// If already logged in ignore everything
 	if (sess['logged_in_as']) {
 		result['success'] = 1;

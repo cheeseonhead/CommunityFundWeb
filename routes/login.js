@@ -6,9 +6,11 @@ var sess;
 router.get('/', function(req, res, next) {
 	sess = req.session;
 
+	sess['backUrl'] = req.headers.referer || '/';
+
 	// If already logged in redirect to main page
 	if (sess['logged_in_as']) {
-		res.redirect('/');
+		res.redirect(sess['backUrl']);
 	}
 
 	// Show log in page

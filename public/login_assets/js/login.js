@@ -53,7 +53,7 @@
                         if (respObj.success) {
                             form_success(thisForm);
                             // eventRegistry.doEvent(eventRegistry.EventAjaxResponse, respObj);
-                            location.reload();
+                            location = resp.backUrl;
                         } else {
                             form_failed(thisForm, respObj.err_msg);
                         }
