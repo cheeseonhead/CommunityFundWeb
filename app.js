@@ -42,6 +42,7 @@ app.use('/users', users);
 app.use('/login', require('./routes/login'));
 app.use('/register', require('./routes/register'));
 app.use('/profile', require('./routes/profile'));
+app.use('/project', require('./routes/project'));
 app.use('/do_login', require('./routes/do_login'));
 app.use('/do_register', require('./routes/do_register'));
 app.use('/do_logout', require('./routes/do_logout'));

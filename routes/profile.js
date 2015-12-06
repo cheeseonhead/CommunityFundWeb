@@ -60,7 +60,18 @@ router.get('/', function(req, res, next) {
 		data['show_self'] = false;
 	}
 
+	if(sess['logged_in_as']) {
+		data['login'] = false;
+	} else {
+		data['login'] = true;
+	}
+
+	// Ge the info of logged in user
 	Tasks.addTask(function() {
+		if (!sess['logged_in_as']) {
+			Tasks.runNext();
+			return;
+		}
 		usersColl.find({
 			username: sess['logged_in_as']
 		}, {}, function(err, users) {
@@ -91,7 +102,7 @@ router.get('/', function(req, res, next) {
 				data['tg_reputation'] = users[0].reputation;
 				data['tg_country'] = users[0].country;
 				targetUserObj = users[0];
-				self.runNext();
+				Tasks.runNext();
 			}
 		});
 	});
@@ -108,13 +119,9 @@ router.get('/', function(req, res, next) {
 				result['err_type'] = 'mongodb_error';
 				result['err_msg'] = "Unknown Error Occured.";
 				res.render('profile', result);
-			} else if (interests.length <= 0) {
-				result['success'] = 0;
-				result['err_type'] = 'no_matched_interests';
-				res.render('profile', result);
 			} else {
 				data['tg_interest'] = interests;
-				self.runNext();
+				Tasks.runNext();
 			}
 		});
 	});
@@ -127,7 +134,7 @@ router.get('/', function(req, res, next) {
 			// console.log(projects);
 			data['project'] = projects;
 			// data['project'] = ["Hello", "GOODBYE"];
-			self.runNext();
+			Tasks.runNext();
 		});
 	});
 

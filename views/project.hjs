@@ -75,103 +75,66 @@
                     <div class="col-lg-12">
                         <img class="img-responsive" src="profile_assets/img/profile.png" alt="">
                         <div class="intro-text">
-                            <span class="name">{{tg_firstname}} {{tg_surname}}</span>
+                            <span class="name">{{p_title}}</span>
                             <hr class="star-light">
                             <span class="skills">
-                                Reputation: {{tg_reputation}}
+                                Reputation: {{p_reputation}}
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Portfolio Grid Section -->
-        <section id="portfolio">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2>Projects</h2>
-                        <hr class="star-primary">
-                    </div>
-                </div>
-                <div class="row">
-                    {{#project}}
-                    <div class="col-sm-4 portfolio-item">
-                        <a href="#project-{{id}}" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <i class="fa fa-search-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img src="profile_assets/img/portfolio/cabin.png" class="img-responsive" alt="">
-                        </a>
-                    </div>
-                    {{/project}}
-                    {{^project}}
-                    <div class="col-lg-12 text-center">
-                        <h2>There are none :(</h2>
-                    </div>
-                    {{/project}}
-                </div>
-            </div>
-        </section>
         <!-- About Section -->
-        <section class="success" id="about">
+        <section class="" id="about">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h2>About</h2>
-                        {{#show_self}}
+                        {{#show_owner}}
                         <a id='editButton' href="#" class="editable"><i class="fa fa-pencil"></i>Edit</a>
-                        {{/show_self}}
-                        <hr class="star-light">
+                        {{/show_owner}}
+                        <!-- <hr class="star-light"> -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-2">
                         Basic Info:
                         <ul class="infoDisplay">
-                            <li>Name: {{tg_firstname}} {{tg_surname}}</li>
-                            <li>Country: {{#tg_country}}{{tg_country}}{{/tg_country}}{{^tg_country}}Not Specified{{/tg_country}}</li>
+                            <li>Project Title: {{p_title}}</li>
+                            <li>Owner: {{o_firstname}} {{o_surname}}</li>
+                            <li>Fund Target: {{p_goal}}</li>
                         </ul>
-                        {{#show_self}}
+                        {{#show_owner}}
                         <div class="login-form-1 infoEditForm" style='display:none;'>
                             <form id="edit-form" class="text-left">
                                 <div class="login-form-main-message"></div>
                                 <div class="main-login-form">
                                     <div class="login-group">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="new_firstname" name="new_firstname" placeholder="firstname" value="{{tg_firstname}}">
+                                            <input type="text" class="form-control" id="new_title" name="new_title" placeholder="title" value="{{p_title}}">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="new_surname" name="new_surname" placeholder="last name" value="{{tg_surname}}">
-                                        </div>
-                                        <div class="form-group">
-                                            Country: <select class="selectpicker" class="form-control" id="new_country" name="new_country">
-                                                <option>{{tg_country}}</option>
-                                                {{#country}}
-                                                <option>{{name}}</option>
-                                                {{/country}}
-                                            </select>
+                                            <input type="text" class="form-control" id="new_goal" name="new_goal" placeholder="funding goal" value="{{p_goal}}">
                                         </div>
                                     </div>
                                     <button id="saveButton" type="submit" class="btn btn_warning login-button">Save</button>
                                 </div>
                             </form>
                         </div>
-                        {{/show_self}}
+                        {{/show_owner}}
                     </div>
                     <div class="col-lg-4">
-                        Interests:
+                        Categories:
                         <ul class="infoDisplay">
-                            {{#tg_interest}}
+                            {{#p_interest}}
                             <li>{{int_name}}</li>
-                            {{/tg_interest}}
-                            {{^tg_interest}}
+                            {{/p_interest}}
+                            {{^p_interest}}
                             <li>Not Specified</li>
-                            {{/tg_interest}}
+                            {{/p_interest}}
                         </ul>
-                        {{#show_self}}
+                        {{#show_owner}}
                         <div class="login-form-1 infoEditForm" style='display:none;'>
                             <form id="interest-form" class="text-left">
                                 <div class="login-form-main-message"></div>
@@ -189,7 +152,7 @@
                                 </div>
                             </form>
                         </div>
-                        {{/show_self}}
+                        {{/show_owner}}
                     </div>
                 </div>
             </div>
