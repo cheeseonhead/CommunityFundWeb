@@ -179,6 +179,15 @@
                 </div>
             </div>
         </section>
+        <section class="success">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Rate 'n Fund</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Footer -->
         <footer class="text-center">
             <div class="footer-above">
